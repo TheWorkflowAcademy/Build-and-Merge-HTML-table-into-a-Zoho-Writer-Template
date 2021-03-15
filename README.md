@@ -26,7 +26,7 @@ The meat of the script starts here. Once you have your list (in this example, It
 
 #### Set the Headers for the Table & Define the Counters
 * headers: Start building your table here by creating the headers and customizing the table properties (cellpading/cellspacing/width/background color/etc).
-  * In this table example, the headers are Name, Serial Number and Quantity.
+  * In this table example, the headers are Name, SKU, Serial Number and Quantity.
 * bodytext: Set to an empty string. This will be used to build the rows of the table.
 * n: Set it as 0. This will be used later to alternate the table row colors.
 
@@ -36,4 +36,42 @@ bodytext = "";
 n = 0;
 ```
 
-#### Iterate through the List, Build the Table Contents, 
+#### Iterate through the List & Build the Table Rows
+* Get the Name, SKU, Serial Number and Quantity values for each element of the list.
+* Insert the script that alternates row colors. You can customize the row color to anything you desire, just specify the hex code.
+ * At each iteration, we +1 to n. 
+ * Then, define *hex* with an *if* condition that sets that value in an alternating pattern with the *isOdd* function.
+* Build the table row with the *bodytext* variable.
+* Finally, outside the loop, combine the *headers* and *bodytext* and add a `</table>` command to close the table. You now have the full table that should look like this:
+
+| Name | SKU | Serial Number | Quantity |
+|---|---|---|---|
+| Row 1 | | | |
+| Row 2 | | | |
+| Row 3 | | | |
+| Etc.. | | | |
+
+
+```javascript
+for each  i in items
+{
+	name = i.get("Name");
+	SKU = i.get("SKU");
+	serial = i.get("Serial_Number");
+	quantity = i.get("Quantity");
+	// This gives the table rows alternating colours
+	n = n + 1;
+	if(isOdd(n))
+	{
+		hex = "FFFFFF";
+	}
+	else
+	{
+		hex = "F3F6F9";
+	}
+	// Build the bodytext for the table
+	bodytext = bodytext + "<tr bgcolor=" + hex + "><td>" + name + "</td><td>" + SKU + "</td><td>" + cereal + "</td><td>" + quantity + "</td></tr>";
+}
+fulltable = headers + bodytext + "</table>";
+info fulltable;
+```
