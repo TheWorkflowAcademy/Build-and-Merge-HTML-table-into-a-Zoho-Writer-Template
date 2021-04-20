@@ -75,3 +75,5 @@ for each  i in items
 fulltable = headers + bodytext + "</table>";
 info fulltable;
 ```
+#### Merge the fulltable variable into a Rich Text Field
+Your HTML table is ready. Just [merge it into the Rich Text Merge Field in your Zoho Writer template](https://www.zoho.com/deluge/help/writer/merge-and-store.html), and you're good to go!
