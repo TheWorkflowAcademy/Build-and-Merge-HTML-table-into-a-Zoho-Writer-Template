@@ -1,4 +1,4 @@
-# Merge-Table-with-Dynamic-Rows-ZohoWriter
+# Merge-HTML-Table-with-Dynamic-Rows-ZohoWriter-Template
 A Deluge script that dynamically builds a HTML table with alternating row colors and merges into a Zoho Writer template.
 
 ## Core Idea
