@@ -1,0 +1,31 @@
+// Get the Subform
+deal = zoho.crm.getRecordsbyId("Deals",dealid);
+items = deal.get("Items");
+
+// Build the Table
+headers = "<table cellpadding=8 cellspacing=4 style=width:100%><tr bgcolor=#F3F6F9><td><b><font color=000000>Name</font></b></td><td><b><font color=000000>SKU</font></b></td><td><b><font color=000000>Serial Number</font></b></td><td><b><font color=000000>Quantity</font></b></td></tr>";
+bodytext = "";
+n = 0;
+
+// Iterate through the List & Build the Table Rowsc
+for each  i in items
+{
+	name = i.get("Name");
+	SKU = i.get("SKU");
+	serial = i.get("Serial_Number");
+	quantity = i.get("Quantity");
+	// This gives the table rows alternating colours
+	n = n + 1;
+	if(isOdd(n))
+	{
+		hex = "FFFFFF";
+	}
+	else
+	{
+		hex = "F3F6F9";
+	}
+	// Build the bodytext for the table
+	bodytext = bodytext + "<tr bgcolor=" + hex + "><td>" + name + "</td><td>" + SKU + "</td><td>" + cereal + "</td><td>" + quantity + "</td></tr>";
+}
+fulltable = headers + bodytext + "</table>";
+info fulltable;
